@@ -3,11 +3,7 @@ var cats = {};
 Leap.loop(function(frame) {
  frame.hands.forEach(function(hand, index) {
   cats[0].setTransform(hand.screenPosition(), hand.roll());
-  //  var cat = ( cats[index] || (cats[index] = new Cat()) );    
-  //  cat.setTransform(hand.screenPosition(), hand.roll());
   });
-
-  
 }).use('screenPosition', {scale: 0.25});
 
 
@@ -17,7 +13,7 @@ var Cat = function() {
   var mybody = document.createElement('img');
   img.id = "myhead";
   mybody.id = "mybody";
-  img.src = 'img/elenahappyface.png';
+  img.src = 'http://pinkhope.org.au/wp-content/uploads/2013/05/imdb_angelina_-jolie.jpg';
   mybody.src = 'img/oktoberfest.png';
   mybody.className = 'normal';
   img.style.position = 'absolute';
@@ -26,9 +22,6 @@ var Cat = function() {
     cat.setTransform([window.innerWidth/2,window.innerHeight/2], 0);
         document.getElementById("canvas").appendChild(img);
         document.getElementById("canvas").appendChild(mybody);
-
-        //img.appendChild(myhead);
-        //img.appendChild(mybody);
   }
   
   cat.setTransform = function(position, rotation) {
