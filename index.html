@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/simple-sidebar.css" rel="stylesheet">
 
         <script src="http://js.leapmotion.com/leap-0.5.0.min.js"></script>
         <script src="http://js.leapmotion.com/leap-plugins-0.1.4.js"></script>
@@ -16,64 +17,86 @@
         <![endif]-->
         <link href="css/style.css" rel="stylesheet">
         <script src="js/audio.js"></script>
-        <script src="js/face.js"></script>
+       
         <script src="js/settings.js"></script>   
         
     </head>    
     <body>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Leap Puppets</a>
-    </div>
+
     <div class="form-group">
-    <form class="navbar-form navbar-left" onsubmit="changeFace()">
+    <form class="navbar-form navbar-right" onsubmit="changeFace()">
           <label>Paste the url of your picture</label>
           <input type="text" id="img-url" class="form-control" placeholder="http://...">
           <a href="javascript:changeFace()">Puppet it</a>
-      </form>
-      </div>
+    </form>
   </div>
-</nav>
 
-<div class="container-fluid">
-      <div class="row row-offcanvas row-offcanvas-left">
-         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-           <audio id="music" controls>
+    <audio id="music" controls loop>
           <source src="audio/oktoberfest.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
-        </audio>
-            <ul class="nav nav-sidebar">
-              <li class="active">Choose dress</li>
-              <li><a href="javascript:changeOktoberfestBoy()">Oktoberfest Boy</a></li>
-              <li><a href="javascript:changeOktoberfestGirl()">Oktoberfest Girl</a></li>
-              <li><a href="javascript:changeChewbacca()">Chewbacca</a></li>
-              <li><a href="javascript:changeSpiderman()">Spiderman</a></li>
+    </audio>   
+ 
+      <div>
+       <ul class="nav nav-pills">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Choose Dress <span class="caret"></span>
+                </a>
+                 <ul class="dropdown-menu" role="menu">
+                  <li><a href="javascript:changeOktoberfestBoy()">Oktoberfest Boy</a></li>
+                  <li><a href="javascript:changeOktoberfestGirl()">Oktoberfest Girl</a></li>
+                  <li><a href="javascript:changeChewbacca()">Chewbacca</a></li>
+                 <li><a href="javascript:changeSpiderman()">Spiderman</a></li>
+                 <li><a href="javascript:changeMarioBros()">Mario Bros</a></li>
+                 <li><a href="javascript:changeJohnTravolta()">John Travolta</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Choose Background <span class="caret"></span>
+                </a>
+                 <ul class="dropdown-menu" role="menu">
+                  <li><a href="javascript:changeDisco()">Disco</a></li>
+                  <li><a href="javascript:changeBeach()">Beach</a></li>
+                  <li><a href="javascript:changeMoon()">Moon</a></li>
+                  <li><a href="javascript:changeLandscape()">Landscape</a></li>
+                  <li><a href="javascript:changeNewYork()">New York</a></li>
+                  <li><a href="javascript:changeMarioBG()">Mario Bros World</a></li>
+                </ul>
+              </li>
             </ul>
-            <ul class="nav nav-sidebar">
-              <li class="active">Choose background</li>
-              <li><a href="javascript:changeDisco()">Disco</a></li>
-              <li><a href="javascript:changeBeach()">Beach</a></li>
-              <li><a href="javascript:changeMoon()">Moon</a></li>
-              <li><a href="javascript:changeLandscape()">Landscape</a></li>
-              <li><a href="javascript:changeNewYork()">New York</a></li>
-            </ul>
+          </div>
+</nav>
+ <div id="wrapper">
+        <div id="sidebar-wrapper">
+          <img src="img/logo2.svg" width="200" alt="logo" class="logo"/>
+        <form class="navbar-form navbar-left" onsubmit="changeImage()">
+          <label>Border radius</label>
+          <input  type="range" id="b-range" name="border-radius" min="0" max="100"></br>
+          <label>Width</label>
+          <input  type="range" id="w-range" name="width" min="20" max="200"></br>
+          <label>Height</label>
+          <input  type="range" id="h-range" name="height" min="20" max="200"></br>
+          <label>Position Vertical</label>
+          <input  type="range" id="pv-range" name="vertical" min="-20" max="20"></br>
+          <label>Position horizontal</label>
+          <input  type="range" id="ph-range" name="horizontal" min="-20" max="20"></br>
+    </form>
         </div>
-        <div class="col-sm-9 col-md-10">
-		        <h1 class="page-header">
-            Dance Floor
-            <p class="lead">Move your puppet with your leap motion</p>
-          </h1>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+          <div  class="col-sm-9 col-md-10" id="canvas">
+          </div>
         </div>
-        <div  class="col-sm-9 col-md-10" id="canvas">
-      </div>
-      </div><!--/row-->
+    </div>
       <footer>
-  <p class="pull-right">By <a href="http://twitter.com/@elenarcolepsia">Elena Torro</a></p>
-</footer>
-</div><!--/.container-->    
-        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  
+        <p class="pull-right">By <a href="http://twitter.com/@elenarcolepsia">Elena Torro</a></p>
+    </footer>
+        <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>  
         <!-- JavaScript jQuery code from Bootply.com editor -->
         
         <script type='text/javascript'>
@@ -84,5 +107,7 @@
         });
         
         </script>
+          <script src="js/custom-image.js"></script>
+           <script src="js/face.js"></script>
     </body>
 </html>

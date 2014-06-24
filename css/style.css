@@ -1,10 +1,24 @@
 body {
-  background-color: #f5f5f5;
+  background-color: black;
+
 }
 footer {
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #fff;
+    background-color: black;
+}
+
+
+
+.navbar {
+    background-color: black;
+    border-style: none;
+}
+
+.logo {
+  position: static;
+  margin: 0 auto 0 auto;
+  z-index: 2;
 }
 
 .dancer {
@@ -15,7 +29,12 @@ footer {
 
 #myhead {
   width: 80px;
-  position: top;
+  height: 80px;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 2px;
+  
 }
 
 #mybody {
@@ -31,11 +50,19 @@ footer {
 }
 
 #canvas {
-  height: 600px;
+  height: 700px;
   width: 100%;
   background-size: 100%;
   background-image: url('../img/landscape.jpg');
+  position: fixed;
 
+}
+
+#sidebar-wrapper {
+  background-color: black;
+  z-index: -1;
+  width: 20%;
+  color: white;
 }
 
 /*
